@@ -1,70 +1,87 @@
 import 'package:ecommerce_app/core/app_text_style.dart';
+import 'package:ecommerce_app/core/colors.dart';
 import 'package:ecommerce_app/models/location_model.dart';
 import 'package:ecommerce_app/widgets/address_in_address_screen.dart';
 import 'package:flutter/material.dart';
 
-class AddressScreen extends StatelessWidget {
+class AddressScreen extends StatefulWidget {
   const AddressScreen({super.key});
 
   @override
+  State<AddressScreen> createState() => _AddressScreenState();
+}
+
+class _AddressScreenState extends State<AddressScreen> {
+  // أول Address تكون متعلمة
+  int selectedIndex = 0;
+
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          title: const Text("Address", style: AppTextStyles.h3SemiBold),
-          centerTitle: true,
-          leading: InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: const Icon(Icons.arrow_back, size: 30),
-          ),
-          actions: const [
-            Icon(Icons.notifications, size: 30),
-            SizedBox(width: 25),
-          ],
+    return Scaffold(
+      backgroundColor: AppColors.white,
+
+      appBar: AppBar(
+        backgroundColor: AppColors.white,
+
+        title: const Text("Address", style: AppTextStyles.h3SemiBold),
+
+        centerTitle: true,
+
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(Icons.arrow_back, size: 30),
         ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Column(
-              children: [
-                SizedBox(height: 25),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Saved Address",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight(600)),
+
+        actions: const [
+          Icon(Icons.notifications, size: 30),
+          SizedBox(width: 25),
+        ],
+      ),
+
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 25),
+          child: Column(
+            children: [
+              const SizedBox(height: 25),
+
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  "Saved Address",
+                  style: AppTextStyles.b1SemiBold.copyWith(
+                    color: AppColors.black,
                   ),
                 ),
-                SizedBox(height: 14),
-                // AddressInAddressScreen(location: locations[0]),
-                // SizedBox(height: 12,),
-                // AddressInAddressScreen(location: locations[1]),
-                // SizedBox(height: 12,),
-                // AddressInAddressScreen(location: locations[2]),
-                // SizedBox(height: 12,),
-                // AddressInAddressScreen(location: locations[3]),
-                // SizedBox(height: 24,)
-                for(int i =0;i<locations.length;i++)
+              ),
+
+              const SizedBox(height: 14),
+
+              for (int i = 0; i < locations.length; i++)
                 Column(
                   children: [
-                    AddressInAddressScreen(location: locations[i]),
-                    SizedBox(height: 12,)
+                    AddressInAddressScreen(
+                      location: locations[i],
+
+                      // هل الـ Address دي مختارة؟
+                      isSelected: selectedIndex == i,
+
+                      // لما المستخدم يضغط عليها
+                      onTap: () {
+                        setState(() {
+                          selectedIndex = i;
+                        });
+                      },
+                    ),
+
+                    const SizedBox(height: 12),
                   ],
                 ),
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      // color: Color()
-                    )
-                  ),
-                )
-              ],
-            ),
+
+              Container(height: 1, color: AppColors.black),
+            ],
           ),
         ),
       ),
@@ -73,6 +90,7 @@ class AddressScreen extends StatelessWidget {
 }
 
 List<String> locationType = ["Home", "Office", "Apartment", "Parent’s House"];
+
 List<LocationModel> locations = [
   LocationModel(
     type: locationType[0],
@@ -91,6 +109,3 @@ List<LocationModel> locations = [
     locationDescription: "4821 Ridge Top Cir, Anchorage, Alaska 99508, USA",
   ),
 ];
-List<bool> isChecked = [true, ...List.filled(locations.length-1, false)];
-//  isChecked[0] = true;
-
