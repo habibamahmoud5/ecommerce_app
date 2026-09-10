@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 
 class EcommerceApp extends StatelessWidget {
@@ -5,6 +6,9 @@ class EcommerceApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false);
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: OnboardingScreen(),
+    );
   }
 }
