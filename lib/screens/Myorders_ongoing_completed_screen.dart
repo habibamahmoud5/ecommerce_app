@@ -5,6 +5,7 @@ import '../widgets/order_card.dart';
 import '../widgets/order_nav_bar.dart';
 import '../widgets/order_tab_bar.dart';
 import '../widgets/empty_orders.dart';
+import '../widgets/draggable_review_sheet.dart';
 
 class MyOrdersScreen extends StatefulWidget {
   const MyOrdersScreen({super.key});
@@ -93,6 +94,16 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
     ),
   ];
 
+  void _openReviewSheet(Order order) {
+    ReviewBottomSheet.show(
+      context,
+      onSubmit: (rating, reviewText) {
+        // TODO: send `rating` + `reviewText` to your backend
+        setState(() {});
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final bool isCompleted = _selectedTab == 1;
@@ -138,6 +149,9 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                           buttonText: isCompleted
                               ? 'Leave Review'
                               : 'Track Order',
+                          onButtonPressed: isCompleted
+                              ? () => _openReviewSheet(orders[index])
+                              : null,
                         );
                       },
                     ),
