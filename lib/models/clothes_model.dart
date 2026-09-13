@@ -4,17 +4,12 @@ class ClothesModel {
   String? size;
   int? price;
   int count = 1;
+  bool? isSaved = false;
   ClothesModel({
     required this.image,
     required this.name,
-    required this.size,
+    this.size,
     required this.price,
+    this.isSaved
   });
-  // incrementCount() {
-  //   _count++;
-  // }
-
-  // decrementCount() {
-  //   _count--;
-  // }
 }

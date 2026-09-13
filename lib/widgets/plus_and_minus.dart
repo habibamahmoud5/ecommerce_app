@@ -1,19 +1,15 @@
 import 'package:ecommerce_app/core/app_text_style.dart';
 import 'package:ecommerce_app/core/colors.dart';
 import 'package:ecommerce_app/models/clothes_model.dart';
+import 'package:ecommerce_app/models/invoice_class.dart';
 import 'package:ecommerce_app/screens/cart.dart';
 import 'package:flutter/material.dart';
 
 class PlusAndMinus extends StatefulWidget {
   // int myCount;
   final ClothesModel clothesModel;
-  static int subTotal = preSum.reduce((a, b) => a + b);
-  static int shippingFee = 80;
-  static List<int> preSum = products
-      .map(((e) => (e.price ?? 0) * e.count))
-      .toList();
-  static int total = 0;
-  const PlusAndMinus({super.key, required this.clothesModel});
+  final InvoiceClass myClass;
+  const PlusAndMinus({super.key, required this.clothesModel,required this.myClass});
 
   @override
   State<PlusAndMinus> createState() => _PlusAndMinusState();
@@ -33,13 +29,11 @@ class _PlusAndMinusState extends State<PlusAndMinus> {
               setState(() {
                 if (widget.clothesModel.count > 0) {
                   widget.clothesModel.count--;
+
+                  widget.myClass.preSum = cartProducts
+                      .map(((e) => (e.price ?? 0) * e.count))
+                      .toList();
                 }
-                PlusAndMinus.preSum = products
-                    .map(((e) => (e.price ?? 0) * e.count))
-                    .toList();
-                PlusAndMinus.subTotal = PlusAndMinus.preSum.reduce(
-                  (a, b) => a + b,
-                );
               });
             },
             child: Container(
@@ -54,15 +48,9 @@ class _PlusAndMinusState extends State<PlusAndMinus> {
             onTap: () {
               setState(() {
                 widget.clothesModel.count++;
-                PlusAndMinus.preSum = products
+                widget.myClass.preSum = cartProducts
                     .map(((e) => (e.price ?? 0) * e.count))
                     .toList();
-                PlusAndMinus.subTotal = PlusAndMinus.preSum.reduce(
-                  (a, b) => a + b,
-                );
-                PlusAndMinus.total =
-                    PlusAndMinus.subTotal + PlusAndMinus.shippingFee;
-                // print();
               });
             },
             child: Container(

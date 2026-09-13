@@ -1,12 +1,14 @@
 import 'package:ecommerce_app/core/app_text_style.dart';
 import 'package:ecommerce_app/core/colors.dart';
 import 'package:ecommerce_app/models/clothes_model.dart';
+import 'package:ecommerce_app/models/invoice_class.dart';
 import 'package:ecommerce_app/screens/checkout_screen.dart';
 import 'package:ecommerce_app/widgets/invoice.dart';
 import 'package:ecommerce_app/widgets/product_in_cart.dart';
 import 'package:flutter/material.dart';
 
 class Cart extends StatelessWidget {
+  static final InvoiceClass myclass=InvoiceClass();
   const Cart({super.key});
 
   @override
@@ -30,11 +32,11 @@ class Cart extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 20),
-                  ProductInCart(product: products[0]),
-                  ProductInCart(product: products[1]),
-                  ProductInCart(product: products[2]),
+                  for(int i =  0;i<cartProducts.length;i++)
+                  ProductInCart(product: cartProducts[i],myclass: myclass,),
+                  
                   SizedBox(height: 10,),
-                  Invoice(),
+                  Invoice(myclass1: myclass,),
                 ],
               ),
             ),
@@ -77,23 +79,26 @@ class Cart extends StatelessWidget {
   }
 }
 
-List<ClothesModel> products = [
+List<ClothesModel> cartProducts = [
   ClothesModel(
     image: "assets/purple_t-shirt.png",
     name: "Regular Fit Slogan",
     size: "Size L",
     price: 1190,
+    // isSaved: true
   ),//0
   ClothesModel(
     image: "assets/blue_t-shirt.png",
     name: "Regular Fit Polo",
     size: "Size M",
     price: 1000,
+    // isSaved: true
   ),//1
   ClothesModel(
     image: "assets/brown_t-shirt.png",
     name: "Regular Fit Black",
     size: "Size L",
     price: 1290,
+    // isSaved: true
   ),//2
 ];

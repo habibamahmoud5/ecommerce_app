@@ -1,19 +1,16 @@
 import 'package:ecommerce_app/core/colors.dart';
-import 'package:ecommerce_app/models/location_model.dart';
+import 'package:ecommerce_app/models/payment_mathod_model.dart';
 import 'package:flutter/material.dart';
 
-class AddressInAddressScreen extends StatelessWidget {
-  final LocationModel location;
-
-  final bool isSelected;
-
+class PaymentMathodContainer extends StatelessWidget {
   final VoidCallback onTap;
-
-  const AddressInAddressScreen({
+  final PaymentMathodModel paymentMathod;
+  final bool isSelected;
+  const PaymentMathodContainer({
     super.key,
-    required this.location,
-    required this.isSelected,
     required this.onTap,
+    required this.paymentMathod,
+    required this.isSelected,
   });
 
   @override
@@ -45,35 +42,18 @@ class AddressInAddressScreen extends StatelessWidget {
           children: [
             Row(
               children: [
-                const Icon(Icons.location_on, size: 28),
+                Image.asset("${paymentMathod.image}",width: 36,height: 14,
+                fit: BoxFit.contain,),
 
                 const SizedBox(width: 14),
 
                 SizedBox(
                   width: 200,
 
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-
-                    children: [
-                      Text(
-                        location.type,
-
-                        style: const TextStyle(fontWeight: FontWeight.w600),
-                      ),
-
-                      Expanded(
-                        child: Text(
-                          location.locationDescription,
-
-                          style: TextStyle(color: AppColors.gray808),
-
-                          maxLines: 1,
-
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ),
-                    ],
+                  child: Text(
+                    "${paymentMathod.number}",
+                  
+                    style: const TextStyle(fontWeight: FontWeight.w600),
                   ),
                 ),
               ],

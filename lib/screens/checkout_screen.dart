@@ -3,7 +3,10 @@ import 'dart:ui';
 import 'package:ecommerce_app/core/app_text_style.dart';
 import 'package:ecommerce_app/core/colors.dart';
 import 'package:ecommerce_app/screens/address_screen.dart';
+import 'package:ecommerce_app/screens/cart.dart';
+import 'package:ecommerce_app/screens/payment_mathod_screen.dart';
 import 'package:ecommerce_app/widgets/address_in_checkout.dart';
+import 'package:ecommerce_app/widgets/congratulations_box.dart';
 import 'package:ecommerce_app/widgets/invoice.dart';
 import 'package:ecommerce_app/widgets/payment_methods.dart';
 import 'package:flutter/material.dart';
@@ -102,7 +105,17 @@ class CheckoutScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Icon(Icons.edit, size: 28),
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const PaymentMathodScreen(),
+                            ),
+                          );
+                          },
+                          child: Icon(Icons.edit, size: 28)
+                        ),
                       ],
                     ),
                   ),
@@ -114,7 +127,7 @@ class CheckoutScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight(600)),
                   ),
                   SizedBox(height: 16),
-                  Invoice(),
+                  Invoice(myclass1: Cart.myclass,),
                   SizedBox(height: 16),
                   Row(
                     children: [
@@ -169,19 +182,33 @@ class CheckoutScreen extends StatelessWidget {
                 bottom: 27,
                 right: 0,
                 left: 0,
-                child: Container(
-                  height: 54,
-                  decoration: BoxDecoration(
-                    color: AppColors.black,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Center(
-                    child: Text(
-                      "Place Order",
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight(600),
-                        color: Colors.white,
+                child: InkWell(
+                  onTap:() {
+                    showDialog(
+                      context: context,
+                      barrierDismissible: false,
+                      builder: (context) {
+                        return CongratulationsBox(
+                          event: "Your order has been placed.",
+                          buttonText: "Track Your Order",
+                        );
+                      },
+                    );
+                  } ,
+                  child: Container(
+                    height: 54,
+                    decoration: BoxDecoration(
+                      color: AppColors.black,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "Place Order",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight(600),
+                          color: Colors.white,
+                        ),
                       ),
                     ),
                   ),

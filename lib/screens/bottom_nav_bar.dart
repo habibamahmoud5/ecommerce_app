@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/core/colors.dart';
 import 'package:ecommerce_app/screens/cart.dart';
+import 'package:ecommerce_app/screens/saved_items_screen.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -9,53 +10,67 @@ class BottomNavBar extends StatefulWidget {
   State<BottomNavBar> createState() => _BottomNavBarState();
 }
 
+
+
 class _BottomNavBarState extends State<BottomNavBar> {
-  int currntIndex= 3;
+  int currntIndex = 3;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+
       home: Scaffold(
         backgroundColor: Colors.white,
-        body:Cart(),
+
+        body: currntIndex==3?Cart():SavedItemsScreen(),
+
         bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.white,
+
           type: BottomNavigationBarType.fixed,
+
           unselectedItemColor: AppColors.gray999,
+
           currentIndex: currntIndex,
+
           selectedItemColor: AppColors.black,
+
           onTap: (value) {
             setState(() {
-              currntIndex=value;
+              currntIndex = value;
             });
           },
+
           items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "home"),
+
+            BottomNavigationBarItem(icon: Icon(Icons.search), label: "search"),
+
+            BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "saved"),
+
             BottomNavigationBarItem(
-              icon:Icon(Icons.home) ,
-              label: "home"
+              icon: Icon(Icons.shopping_cart),
+              label: "cart",
             ),
+
             BottomNavigationBarItem(
-              icon:Icon(Icons.search) ,
-              label: "search"
-            ),
-            BottomNavigationBarItem(
-              icon:Icon(Icons.favorite) ,
-              label: "saved"
-            ),
-            BottomNavigationBarItem(
-              icon:Icon(Icons.shopping_cart) ,
-              label: "cart"
-            ),
-            BottomNavigationBarItem(
-              icon:Icon(Icons.account_circle) ,
-              label: "account"
+              icon: Icon(Icons.account_circle),
+              label: "account",
             ),
           ],
-          selectedLabelStyle:TextStyle(fontSize: 12,fontWeight: FontWeight(500
-          ),color: AppColors.black),
-          unselectedLabelStyle: TextStyle(fontSize: 12,fontWeight: FontWeight(500
-          ),color: AppColors.gray999),
+
+          selectedLabelStyle: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight(500),
+            color: AppColors.black,
+          ),
+
+          unselectedLabelStyle: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight(500),
+            color: AppColors.gray999,
+          ),
         ),
       ),
     );

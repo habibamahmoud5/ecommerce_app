@@ -1,10 +1,11 @@
 import 'package:ecommerce_app/core/app_text_style.dart';
 import 'package:ecommerce_app/core/colors.dart';
-import 'package:ecommerce_app/widgets/plus_and_minus.dart';
+import 'package:ecommerce_app/models/invoice_class.dart';
 import 'package:flutter/material.dart';
 
 class Invoice extends StatelessWidget {
-  const Invoice({super.key});
+  final InvoiceClass myclass1;
+  const Invoice({super.key,required this.myclass1});
 
   // int subTotal = subTotal2;
   @override
@@ -13,6 +14,7 @@ class Invoice extends StatelessWidget {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
+
           children: [
             Text(
               "Sub-total",
@@ -21,12 +23,15 @@ class Invoice extends StatelessWidget {
                 color: AppColors.gray808,
               ),
             ),
-            Text("\$ ${PlusAndMinus.subTotal}", style: AppTextStyles.b1Medium),
+            Text("\$ ${myclass1.subTotal}", style: AppTextStyles.b1Medium),
           ],
         ),
+
         SizedBox(height: 16),
+
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
+
           children: [
             Text(
               "VAT (%)",
@@ -38,9 +43,12 @@ class Invoice extends StatelessWidget {
             Text("\$ 0.0", style: AppTextStyles.b1Medium),
           ],
         ),
-        SizedBox(height: 16),
+
+        const SizedBox(height: 16),
+
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
+
           children: [
             Text(
               "Shipping fee",
@@ -49,11 +57,18 @@ class Invoice extends StatelessWidget {
                 color: AppColors.gray808,
               ),
             ),
-            Text("\$ ${PlusAndMinus. shippingFee}", style: AppTextStyles.b1Medium),
+
+            Text(
+              "\$ ${myclass1.shippingFee}",
+              style: AppTextStyles.b1Medium,
+            ),
           ],
         ),
+
         SizedBox(height: 16),
+
         Divider(),
+
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -64,7 +79,7 @@ class Invoice extends StatelessWidget {
                 // color: AppColors.gray808,
               ),
             ),
-            Text("\$ ${PlusAndMinus.total}", style: AppTextStyles.b1SemiBold),
+            Text("\$ ${myclass1.total}", style: AppTextStyles.b1SemiBold),
           ],
         ),
       ],

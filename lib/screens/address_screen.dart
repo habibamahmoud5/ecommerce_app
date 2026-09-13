@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/core/app_text_style.dart';
 import 'package:ecommerce_app/core/colors.dart';
 import 'package:ecommerce_app/models/location_model.dart';
+import 'package:ecommerce_app/screens/new_address.dart';
 import 'package:ecommerce_app/widgets/address_in_address_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -40,49 +41,121 @@ class _AddressScreenState extends State<AddressScreen> {
         ],
       ),
 
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25),
-          child: Column(
-            children: [
-              const SizedBox(height: 25),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 25),
+        
+        child: Stack(
+          fit: StackFit.expand,
 
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Saved Address",
-                  style: AppTextStyles.b1SemiBold.copyWith(
-                    color: AppColors.black,
-                  ),
-                ),
-              ),
+          children: [
+            SingleChildScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(height: 25),
+                    
+                  Align(
 
-              const SizedBox(height: 14),
+                    alignment: Alignment.centerLeft,
 
-              for (int i = 0; i < locations.length; i++)
-                Column(
-                  children: [
-                    AddressInAddressScreen(
-                      location: locations[i],
-
-                      // هل الـ Address دي مختارة؟
-                      isSelected: selectedIndex == i,
-
-                      // لما المستخدم يضغط عليها
-                      onTap: () {
-                        setState(() {
-                          selectedIndex = i;
-                        });
-                      },
+                    child: Text(
+                      "Saved Address",
+                      style: AppTextStyles.b1SemiBold.copyWith(
+                        color: AppColors.black,
+                      ),
                     ),
 
-                    const SizedBox(height: 12),
-                  ],
+                  ),
+                    
+                  const SizedBox(height: 14),
+                    
+                  for (int i = 0; i < locations.length; i++)
+                    Column(
+                      children: [
+                        AddressInAddressScreen(
+                          location: locations[i],
+                    
+                          // هل الـ Address دي مختارة؟
+                          isSelected: selectedIndex == i,
+                    
+                          // لما المستخدم يضغط عليها
+                          onTap: () {
+                            setState(() {
+                              selectedIndex = i;
+                            });
+                          },
+                        ),
+                    
+                        const SizedBox(height: 12),
+                      ],
+                    ),
+                    
+                  SizedBox(height: 12,),
+                    
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NewAddress(),
+                        ),
+                      );
+                    },
+
+                    child: Container(
+                      height: 54,
+                      
+                      decoration: BoxDecoration(
+                        // color: AppColors.black,
+                        border: Border.all(
+                          color: Color(0xffCCCCCC)
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                      
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                      
+                        children: [
+                          Icon(Icons.add),
+                      
+                          SizedBox(width: 10,),
+                      
+                          Text("Add New Address",style: TextStyle(
+                            fontSize: 16,fontWeight: FontWeight(500),
+                          ),)
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              bottom: 27,
+              left: 0,
+              right: 0,
+
+              child: Container(
+                height:54,
+
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+
+                  color: AppColors.black
                 ),
 
-              Container(height: 1, color: AppColors.black),
-            ],
-          ),
+                child: Center(
+
+                  child: Text("Apply",style: TextStyle(
+                    fontSize: 16,fontWeight: FontWeight(500),color: Colors.white
+                  ),),
+
+                ),
+              )
+            )
+          ],
         ),
       ),
     );

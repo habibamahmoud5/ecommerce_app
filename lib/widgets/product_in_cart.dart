@@ -1,11 +1,13 @@
 import 'package:ecommerce_app/core/colors.dart';
 import 'package:ecommerce_app/models/clothes_model.dart';
+import 'package:ecommerce_app/models/invoice_class.dart';
 import 'package:ecommerce_app/widgets/plus_and_minus.dart';
 import 'package:flutter/material.dart';
 
 class ProductInCart extends StatelessWidget {
+  final InvoiceClass myclass ;
   final ClothesModel product;
-  const ProductInCart({super.key,required this.product});
+  const ProductInCart({super.key,required this.product,required this.myclass});
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +64,7 @@ class ProductInCart extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Icon(Icons.delete, color: Color(0xffED1010)),
-                PlusAndMinus(clothesModel: product)
+                PlusAndMinus(clothesModel: product,myClass:myclass ,)
               ],
             ),
             
