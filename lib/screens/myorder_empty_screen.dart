@@ -1,5 +1,5 @@
+import 'package:ecommerce_app/screens/track_order_screen.dart';
 import 'package:flutter/material.dart';
-
 
 /// Status badge shown on each order card.
 enum OrderStatus { inTransit, picked, packing, delivered }
@@ -61,6 +61,7 @@ class _MyOrdersScreenState extends State<MyEmptyOrdersScreen> {
     final orders = _showOngoing ? widget.ongoingOrders : widget.completedOrders;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: _buildAppBar(context),
       body: Column(
         children: [
@@ -228,8 +229,10 @@ class OrderCard extends StatelessWidget {
                 width: 64,
                 height: 64,
                 color: const Color(0xFFF0F0F0),
-                child: const Icon(Icons.image_not_supported_outlined,
-                    color: Colors.grey),
+                child: const Icon(
+                  Icons.image_not_supported_outlined,
+                  color: Colors.grey,
+                ),
               ),
             ),
           ),
@@ -269,12 +272,21 @@ class OrderCard extends StatelessWidget {
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: onTrackOrder ?? () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const TrackOrderScreen(),
+                          ),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.black,
                         foregroundColor: Colors.white,
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 10),
+                          horizontal: 16,
+                          vertical: 10,
+                        ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10),
                         ),
@@ -282,7 +294,10 @@ class OrderCard extends StatelessWidget {
                       ),
                       child: const Text(
                         'Track Order',
-                        style: TextStyle(fontSize: 12, fontWeight: FontWeight.w600),
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ],
@@ -346,10 +361,7 @@ class _EmptyState extends StatelessWidget {
             const SizedBox(height: 20),
             Text(
               isOngoing ? 'No Ongoing Orders!' : 'No Completed Orders!',
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.w700,
-              ),
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
             ),
             const SizedBox(height: 8),
             Text(
@@ -370,7 +382,7 @@ class _EmptyState extends StatelessWidget {
   }
 }
 
-/// BOTTOM NAV BAR 
+/// BOTTOM NAV BAR
 
 class _BottomNavBar extends StatelessWidget {
   const _BottomNavBar();
@@ -388,13 +400,21 @@ class _BottomNavBar extends StatelessWidget {
           children: const [
             _NavItem(icon: Icons.home_outlined, label: 'Home', selected: false),
             _NavItem(icon: Icons.search, label: 'Search', selected: false),
-            _NavItem(icon: Icons.favorite_border, label: 'Saved', selected: false),
             _NavItem(
-                icon: Icons.shopping_cart_outlined,
-                label: 'Cart',
-                selected: false),
+              icon: Icons.favorite_border,
+              label: 'Saved',
+              selected: false,
+            ),
             _NavItem(
-                icon: Icons.person_outline, label: 'Account', selected: true),
+              icon: Icons.shopping_cart_outlined,
+              label: 'Cart',
+              selected: false,
+            ),
+            _NavItem(
+              icon: Icons.person_outline,
+              label: 'Account',
+              selected: true,
+            ),
           ],
         ),
       ),

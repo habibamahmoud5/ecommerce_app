@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/screens/track_order_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../models/order.dart';
@@ -108,11 +109,10 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
   Widget build(BuildContext context) {
     final bool isCompleted = _selectedTab == 1;
 
-    final orders = isCompleted
-        ? completedOrders
-        : ongoingOrders;
+    final orders = isCompleted ? completedOrders : ongoingOrders;
 
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           children: [
@@ -129,19 +129,11 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
 
             Expanded(
               child: orders.isEmpty
-                  ? EmptyOrders(
-                      isOngoing: !isCompleted,
-                    )
+                  ? EmptyOrders(isOngoing: !isCompleted)
                   : ListView.separated(
-                      padding: const EdgeInsets.fromLTRB(
-                        20,
-                        16,
-                        20,
-                        16,
-                      ),
+                      padding: const EdgeInsets.fromLTRB(20, 16, 20, 16),
                       itemCount: orders.length,
-                      separatorBuilder: (_, __) =>
-                          const SizedBox(height: 14),
+                      separatorBuilder: (_, __) => const SizedBox(height: 14),
                       itemBuilder: (context, index) {
                         return OrderCard(
                           order: orders[index],
@@ -151,7 +143,15 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
                               : 'Track Order',
                           onButtonPressed: isCompleted
                               ? () => _openReviewSheet(orders[index])
-                              : null,
+                              : () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const TrackOrderScreen(),
+                                    ),
+                                  );
+                                },
                         );
                       },
                     ),
@@ -177,12 +177,8 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
       child: Row(
         children: [
           IconButton(
-            icon: const Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-            ),
-            onPressed: () =>
-                Navigator.maybePop(context),
+            icon: const Icon(Icons.arrow_back, color: Colors.black),
+            onPressed: () => Navigator.maybePop(context),
           ),
 
           const Expanded(
@@ -198,10 +194,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
             ),
           ),
 
-          const Icon(
-            Icons.notifications_none,
-            size: 26,
-          ),
+          const Icon(Icons.notifications_none, size: 26),
         ],
       ),
     );

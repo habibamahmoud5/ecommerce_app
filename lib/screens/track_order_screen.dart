@@ -1,3 +1,6 @@
+import 'package:ecommerce_app/core/colors.dart';
+import 'package:ecommerce_app/screens/bottom_navigation_barr_screen.dart';
+import 'package:ecommerce_app/widgets/app_bar_textt.dart';
 import 'package:flutter/material.dart';
 
 class TrackOrderScreen extends StatefulWidget {
@@ -27,8 +30,10 @@ class _TrackOrderScreenState extends State<TrackOrderScreen> {
   void _onSheetChanged() {
     // Normalize current size into a 0-1 progress value
     final size = _sheetController.size;
-    final progress =
-        ((size - _minSize) / (_maxSize - _minSize)).clamp(0.0, 1.0);
+    final progress = ((size - _minSize) / (_maxSize - _minSize)).clamp(
+      0.0,
+      1.0,
+    );
     _sheetProgress.value = progress;
   }
 
@@ -43,6 +48,8 @@ class _TrackOrderScreenState extends State<TrackOrderScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+
       body: Stack(
         children: [
           // ---------- MAP + HEADER (background layer) ----------
@@ -54,20 +61,36 @@ class _TrackOrderScreenState extends State<TrackOrderScreen> {
                     horizontal: 20,
                     vertical: 16,
                   ),
-                  child: Row(
-                    children: [
-                      const Icon(Icons.arrow_back),
-                      const Spacer(),
-                      const Text(
-                        'Track Order',
-                        style: TextStyle(
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold,
-                        ),
+                  child: AppBarText(
+                    title: 'Track Order',
+                    leading: IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(
+                        Icons.arrow_back,
+                        size: 24,
+                        color: AppColors.black,
                       ),
-                      const Spacer(),
-                      const Icon(Icons.notifications_none),
-                    ],
+                    ),
+                    action: IconButton(
+                      onPressed: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const BottomNavigationBarrScreen(
+                                  initialIndex: 4,
+                                ),
+                          ),
+                        );
+                      },
+                      icon: const Icon(
+                        Icons.notifications_none,
+                        size: 24,
+                        color: Color(0xff181725),
+                      ),
+                    ),
                   ),
                 ),
                 Expanded(
@@ -96,7 +119,7 @@ class _TrackOrderScreenState extends State<TrackOrderScreen> {
                                 top: -extraShift * 0.4,
                                 bottom: extraShift * 0.4,
                                 child: Image.asset(
-                                  'assets/images/map.png',
+                                  'assets/images/Map.png',
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -114,28 +137,32 @@ class _TrackOrderScreenState extends State<TrackOrderScreen> {
                                   children: [
                                     Positioned.fill(
                                       child: Image.asset(
-                                          'assets/images/black_line.png'),
+                                        'assets/images/black_line.png',
+                                      ),
                                     ),
                                     Positioned(
                                       left: width * 0.26,
                                       top: height * 0.58,
                                       child: Image.asset(
-                                          'assets/images/home_point.png',
-                                          width: 50),
+                                        'assets/images/home_point.png',
+                                        width: 50,
+                                      ),
                                     ),
                                     Positioned(
                                       left: width * 0.42,
                                       top: height * 0.42,
                                       child: Image.asset(
-                                          'assets/images/truck_point.png',
-                                          width: 50),
+                                        'assets/images/truck_point.png',
+                                        width: 50,
+                                      ),
                                     ),
                                     Positioned(
                                       left: width * 0.76,
                                       top: height * 0.35,
                                       child: Image.asset(
-                                          'assets/images/location_point.png',
-                                          width: 50),
+                                        'assets/images/location_point.png',
+                                        width: 50,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -162,9 +189,7 @@ class _TrackOrderScreenState extends State<TrackOrderScreen> {
               return Container(
                 decoration: const BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.vertical(
-                    top: Radius.circular(20),
-                  ),
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
                 ),
                 child: SingleChildScrollView(
                   controller: scrollController,
@@ -219,15 +244,13 @@ class _TrackOrderScreenState extends State<TrackOrderScreen> {
                         ),
                         _StatusStep(
                           title: 'In Transit',
-                          subtitle:
-                              '16 Rr 2, Ketchikan, Alaska 99901, USA',
+                          subtitle: '16 Rr 2, Ketchikan, Alaska 99901, USA',
                           filled: true,
                           showLine: true,
                         ),
                         _StatusStep(
                           title: 'Delivered',
-                          subtitle:
-                              '925 S Chugach St #APT 10, Alaska 99645',
+                          subtitle: '925 S Chugach St #APT 10, Alaska 99645',
                           filled: false,
                           showLine: false,
                         ),
@@ -238,8 +261,9 @@ class _TrackOrderScreenState extends State<TrackOrderScreen> {
                           children: [
                             const CircleAvatar(
                               radius: 26,
-                              backgroundImage:
-                                  AssetImage('assets/images/delivery_guy.png'),
+                              backgroundImage: AssetImage(
+                                'assets/images/Map.png',
+                              ),
                             ),
                             const SizedBox(width: 12),
                             const Expanded(
@@ -263,8 +287,10 @@ class _TrackOrderScreenState extends State<TrackOrderScreen> {
                             CircleAvatar(
                               radius: 22,
                               backgroundColor: Colors.grey[200],
-                              child: const Icon(Icons.call,
-                                  color: Colors.black),
+                              child: const Icon(
+                                Icons.call,
+                                color: Colors.black,
+                              ),
                             ),
                           ],
                         ),
@@ -309,12 +335,7 @@ class _StatusStep extends StatelessWidget {
                 color: filled ? Colors.black : Colors.grey[300],
               ),
               if (showLine)
-                Expanded(
-                  child: Container(
-                    width: 2,
-                    color: Colors.grey[300],
-                  ),
-                ),
+                Expanded(child: Container(width: 2, color: Colors.grey[300])),
             ],
           ),
           const SizedBox(width: 12),
@@ -332,10 +353,7 @@ class _StatusStep extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 4),
-                  Text(
-                    subtitle,
-                    style: TextStyle(color: Colors.grey[600]),
-                  ),
+                  Text(subtitle, style: TextStyle(color: Colors.grey[600])),
                 ],
               ),
             ),

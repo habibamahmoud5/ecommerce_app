@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/core/colors.dart';
+import 'package:ecommerce_app/screens/bottom_navigation_barr_screen.dart';
 import 'package:ecommerce_app/screens/customer_service_screen.dart';
 import 'package:ecommerce_app/widgets/app_bar_textt.dart';
 import 'package:ecommerce_app/widgets/help_center_option.dart';
@@ -21,7 +22,13 @@ class HelpCenterScreen extends StatelessWidget {
                   title: 'Help Center',
                   leading: IconButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              const BottomNavigationBarrScreen(initialIndex: 4),
+                        ),
+                      );
                     },
                     icon: const Icon(
                       Icons.arrow_back,

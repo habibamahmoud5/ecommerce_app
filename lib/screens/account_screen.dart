@@ -1,9 +1,12 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
 import 'package:ecommerce_app/core/app_text_style.dart';
 import 'package:ecommerce_app/core/colors.dart';
+import 'package:ecommerce_app/screens/Myorders_ongoing_completed_screen.dart';
+import 'package:ecommerce_app/screens/details_screen.dart';
 import 'package:ecommerce_app/screens/faqas_screen.dart';
 import 'package:ecommerce_app/screens/help_center_screen.dart';
 import 'package:ecommerce_app/screens/login_screen.dart';
+import 'package:ecommerce_app/screens/notifications_screen.dart';
 import 'package:ecommerce_app/widgets/account_option.dart';
 import 'package:ecommerce_app/widgets/app_bar_textt.dart';
 import 'package:flutter/material.dart';
@@ -34,10 +37,17 @@ class AccountScreen extends StatelessWidget {
                     ),
                   ),
                   action: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NotificationsScreen(),
+                        ),
+                      );
+                    },
                     icon: const Icon(
                       Icons.notifications_none,
-                      size: 20,
+                      size: 24,
                       color: Color(0xff181725),
                     ),
                   ),
@@ -48,12 +58,26 @@ class AccountScreen extends StatelessWidget {
                 AccountOption(
                   icon: Icons.shopping_bag_outlined,
                   title: 'My Orders',
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => MyOrdersScreen()),
+                    );
+                  },
                 ),
                 Divider(color: AppColors.lightGray, thickness: 8),
 
                 AccountOption(
                   icon: Icons.person_outline_outlined,
                   title: 'My Details',
+                  onTap: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MyDetailsScreen(),
+                      ),
+                    );
+                  },
                 ),
                 Divider(color: AppColors.lightGray, thickness: 1.20),
 

@@ -139,7 +139,9 @@ class SignUpScreen extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  const BottomNavigationBarrScreen(),
+                                  const BottomNavigationBarrScreen(
+                                    initialIndex: 0,
+                                  ),
                             ),
                           );
                         }
