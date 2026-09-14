@@ -49,16 +49,61 @@ A modern and responsive E-Commerce mobile application built with Flutter & Dart,
 - FAQs
 - Customer Service
 
+## 📱 App Screens
+
+<p align="center">
+  <img src="screenshot/1.png" width="200">
+  <img src="screenshot/2.png" width="200">
+  <img src="screenshot/3.png" width="200">
+  <img src="screenshot/4.png" width="200">
+  <img src="screenshot/5.png" width="200">
+</p>
+
+<p align="center">
+  <img src="screenshot/6.png" width="200">
+  <img src="screenshot/7.png" width="200">
+  <img src="screenshot/8.png" width="200">
+  <img src="screenshot/9.png" width="200">
+  <img src="screenshot/10.png" width="200">
+</p>
+
+<p align="center">
+  <img src="screenshot/11.png" width="200">
+  <img src="screenshot/12.png" width="200">
+  <img src="screenshot/13.png" width="200">
+  <img src="screenshot/14.png" width="200">
+  <img src="screenshot/15.png" width="200">
+</p>
+
+<p align="center">
+  <img src="screenshot/16.png" width="200">
+  <img src="screenshot/17.png" width="200">
+  <img src="screenshot/27.png" width="200">
+  <img src="screenshot/18.png" width="200">
+  <img src="screenshot/19.png" width="200">
+  <img src="screenshot/20.png" width="200">
+</p>
+
+<p align="center">
+  <img src="screenshot/21.png" width="200">
+  <img src="screenshot/22.png" width="200">
+  <img src="screenshot/23.png" width="200">
+  <img src="screenshot/24.png" width="200">
+  <img src="screenshot/25.png" width="200">
+  <img src="screenshot/26.png" width="200">
+</p>
+
+
 ## 📂 Project Structure
 
 ```text
 lib/
 │
-├── core/
+├── core
 │   ├── app_text_style.dart
 │   └── colors.dart
 │
-├── models/
+├── models
 │   ├── clothes_model.dart
 │   ├── invoice_class.dart
 │   ├── location_model.dart
@@ -66,7 +111,7 @@ lib/
 │   ├── payment_mathod_model.dart
 │   └── prouduct_model.dart
 │
-├── screens/
+├── screens
 │   ├── account_screen.dart
 │   ├── address_screen.dart
 │   ├── bottom_nav_bar.dart
@@ -122,51 +167,3 @@ lib/
 │
 │── ecommerce_app.dart
 └── main.dart
-
-📱 App Screens
-The application includes the following screens and features:
-
-<p align="center">
-  <img src="screenshot/1.png" width="200">
-  <img src="screenshot/2.png" width="200">
-  <img src="screenshot/3.png" width="200">
-  <img src="screenshot/4.png" width="200">
-  <img src="screenshot/5.png" width="200">
-</p>
-
-<p align="center">
-  <img src="screenshot/6.png" width="200">
-  <img src="screenshot/7.png" width="200">
-  <img src="screenshot/8.png" width="200">
-  <img src="screenshot/9.png" width="200">
-  <img src="screenshot/10.png" width="200">
-</p>
-
-<p align="center">
-  <img src="screenshot/11.png" width="200">
-  <img src="screenshot/12.png" width="200">
-  <img src="screenshot/13.png" width="200">
-  <img src="screenshot/14.png" width="200">
-  <img src="screenshot/15.png" width="200">
-</p>
-
-<p align="center">
-  <img src="screenshot/16.png" width="200">
-  <img src="screenshot/17.png" width="200">
-  <img src="screenshot/27.png" width="200">
-  <img src="screenshot/18.png" width="200">
-  <img src="screenshot/19.png" width="200">
-  <img src="screenshot/20.png" width="200">
-</p>
-
-<p align="center">
-  <img src="screenshot/21.png" width="200">
-  <img src="screenshot/22.png" width="200">
-  <img src="screenshot/23.png" width="200">
-  <img src="screenshot/24.png" width="200">
-  <img src="screenshot/25.png" width="200">
-</p>
-
-<p align="center">
-  <img src="screenshot/26.png" width="200">
-</p>
