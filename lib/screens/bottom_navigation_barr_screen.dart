@@ -1,9 +1,15 @@
 import 'package:ecommerce_app/core/colors.dart';
 import 'package:ecommerce_app/screens/account_screen.dart';
+import 'package:ecommerce_app/screens/discover_screen.dart';
+import 'package:ecommerce_app/screens/home_screen.dart';
+import 'package:ecommerce_app/screens/cart_screen.dart';
+import 'package:ecommerce_app/screens/saved_items_screen.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigationBarrScreen extends StatefulWidget {
-  const BottomNavigationBarrScreen({super.key});
+  final int initialIndex;
+
+  const BottomNavigationBarrScreen({super.key, this.initialIndex = 0});
 
   @override
   State<BottomNavigationBarrScreen> createState() =>
@@ -12,15 +18,21 @@ class BottomNavigationBarrScreen extends StatefulWidget {
 
 class _BottomNavigationBarrScreenState
     extends State<BottomNavigationBarrScreen> {
-  int currentIndex = 0;
+  late int currentIndex;
 
   List<Widget> screens = [
-    AccountScreen(),
-    AccountScreen(),
-    AccountScreen(),
-    AccountScreen(),
-    AccountScreen(),
+    const HomeScreen(),
+    const DiscoverScreen(),
+    SavedItemsScreen(),
+    const CartScreen(),
+    const AccountScreen(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    currentIndex = widget.initialIndex;
+  }
 
   @override
   Widget build(BuildContext context) {
