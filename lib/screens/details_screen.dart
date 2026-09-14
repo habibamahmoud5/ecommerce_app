@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../widgets/order_nav_bar.dart';
+import 'search_screen.dart';
 
 class MyDetailsScreen extends StatefulWidget {
   const MyDetailsScreen({super.key});
@@ -17,7 +19,7 @@ class _MyDetailsScreenState extends State<MyDetailsScreen> {
   String _gender = 'Male';
   final List<String> _genders = ['Male', 'Female', 'Other'];
 
-  int _currentNavIndex = 4; 
+  int _currentNavIndex = 4;
 
   @override
   void dispose() {
@@ -44,10 +46,20 @@ class _MyDetailsScreenState extends State<MyDetailsScreen> {
   }
 
   void _onSubmit() {
-    
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Details submitted')),
     );
+  }
+
+  void _onNavTap(int index) {
+    if (index == 1) {
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (_) => const SearchScreen()),
+      );
+      return;
+    }
+    setState(() => _currentNavIndex = index);
+    // TODO: handle navigation for the other tabs (Home, Saved, Cart, Account)
   }
 
   @override
@@ -128,12 +140,14 @@ class _MyDetailsScreenState extends State<MyDetailsScreen> {
                   ),
                 ),
               ),
-              
             ],
           ),
         ),
       ),
-      bottomNavigationBar: _buildBottomNav(),
+      bottomNavigationBar: OrdersBottomNav(
+        selectedIndex: _currentNavIndex,
+        onItemSelected: _onNavTap,
+      ),
     );
   }
 
@@ -233,30 +247,6 @@ class _MyDetailsScreenState extends State<MyDetailsScreen> {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildBottomNav() {
-    final items = const [
-      {'icon': Icons.home_outlined, 'label': 'Home'},
-      {'icon': Icons.search, 'label': 'Search'},
-      {'icon': Icons.favorite_border, 'label': 'Saved'},
-      {'icon': Icons.shopping_bag_outlined, 'label': 'Cart'},
-      {'icon': Icons.person_outline, 'label': 'Account'},
-    ];
-    return BottomNavigationBar(
-      currentIndex: _currentNavIndex,
-      onTap: (i) => setState(() => _currentNavIndex = i),
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor: Colors.black,
-      unselectedItemColor: Colors.black38,
-      showUnselectedLabels: true,
-      items: items
-          .map((item) => BottomNavigationBarItem(
-                icon: Icon(item['icon'] as IconData),
-                label: item['label'] as String,
-              ))
-          .toList(),
     );
   }
 }
