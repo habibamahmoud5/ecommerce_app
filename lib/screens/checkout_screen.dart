@@ -22,7 +22,7 @@ class CheckoutScreen extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
-          title: const Text("Checkout", style: AppTextStyles.h3SemiBold),
+          title: Text("Checkout", style: AppTextStyles.h3SemiBold),
           centerTitle: true,
           leading: InkWell(
             onTap: () {

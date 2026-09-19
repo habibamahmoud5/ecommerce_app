@@ -54,18 +54,27 @@ class SignUpScreen extends StatelessWidget {
                     SizedBox(height: 10),
                     CustomTextField(
                       label: 'Email',
+                      hintText: 'Enter your email address',
 
                       validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your email';
+                        if (value == null || value.trim().isEmpty) {
+                          return 'Please enter your email address';
                         }
-                        if (!value.contains('@')) {
-                          return 'Enter a valid email';
+
+                        final email = value.trim();
+
+                        final emailRegex = RegExp(
+                          r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+                        );
+
+                        if (!emailRegex.hasMatch(email)) {
+                          return 'Please enter a valid email address';
                         }
+
                         return null;
                       },
-                      hintText: 'Enter your email address',
                     ),
+
                     SizedBox(height: 10),
                     CustomTextField(
                       label: 'Password',

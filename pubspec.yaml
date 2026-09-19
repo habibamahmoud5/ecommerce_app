@@ -38,6 +38,7 @@ dependencies:
   material_symbols_icons: ^4.2960.0
   adaptive_dialog: ^2.8.1
   chat_bubbles: ^1.10.1
+  flutter_screenutil: ^5.9.3
   
 
 dev_dependencies:

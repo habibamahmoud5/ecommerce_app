@@ -24,7 +24,7 @@ class _AddressScreenState extends State<AddressScreen> {
       appBar: AppBar(
         backgroundColor: AppColors.white,
 
-        title: const Text("Address", style: AppTextStyles.h3SemiBold),
+        title: Text("Address", style: AppTextStyles.h3SemiBold),
 
         centerTitle: true,
 

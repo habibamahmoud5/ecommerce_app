@@ -119,7 +119,7 @@ class _TrackOrderScreenState extends State<TrackOrderScreen> {
                                 top: -extraShift * 0.4,
                                 bottom: extraShift * 0.4,
                                 child: Image.asset(
-                                  'assets/images/Map.png',
+                                  'assets/images/map.png',
                                   fit: BoxFit.cover,
                                 ),
                               ),
@@ -262,7 +262,7 @@ class _TrackOrderScreenState extends State<TrackOrderScreen> {
                             const CircleAvatar(
                               radius: 26,
                               backgroundImage: AssetImage(
-                                'assets/images/Map.png',
+                                'assets/images/map.png',
                               ),
                             ),
                             const SizedBox(width: 12),

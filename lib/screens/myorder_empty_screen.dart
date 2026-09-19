@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/screens/bottom_navigation_barr_screen.dart';
 import 'package:ecommerce_app/screens/track_order_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -93,7 +94,15 @@ class _MyOrdersScreenState extends State<MyEmptyOrdersScreen> {
       centerTitle: true,
       leading: IconButton(
         icon: const Icon(Icons.arrow_back, color: Colors.black),
-        onPressed: () => Navigator.maybePop(context),
+        onPressed: () {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  const BottomNavigationBarrScreen(initialIndex: 4),
+            ),
+          );
+        },
       ),
       title: const Text(
         'My Orders',
@@ -271,6 +280,49 @@ class OrderCard extends StatelessWidget {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
+                    // ElevatedButton(
+                    //   onPressed: () {
+                    //     debugPrint('BUTTON PRESSED');
+
+                    //     Navigator.of(context).push(
+                    //       PageRouteBuilder(
+                    //         transitionDuration: Duration.zero,
+                    //         reverseTransitionDuration: Duration.zero,
+                    //         pageBuilder:
+                    //             (context, animation, secondaryAnimation) {
+                    //               return const Scaffold(
+                    //                 backgroundColor: Colors.white,
+                    //                 body: Center(
+                    //                   child: Text(
+                    //                     'Test Screen',
+                    //                     style: TextStyle(fontSize: 24),
+                    //                   ),
+                    //                 ),
+                    //               );
+                    //             },
+                    //       ),
+                    //     );
+                    //   },
+                    //   style: ElevatedButton.styleFrom(
+                    //     backgroundColor: Colors.black,
+                    //     foregroundColor: Colors.white,
+                    //     padding: const EdgeInsets.symmetric(
+                    //       horizontal: 16,
+                    //       vertical: 10,
+                    //     ),
+                    //     shape: RoundedRectangleBorder(
+                    //       borderRadius: BorderRadius.circular(10),
+                    //     ),
+                    //     elevation: 0,
+                    //   ),
+                    //   child: const Text(
+                    //     'Track Order',
+                    //     style: TextStyle(
+                    //       fontSize: 12,
+                    //       fontWeight: FontWeight.w600,
+                    //     ),
+                    //   ),
+                    // ),
                     ElevatedButton(
                       onPressed: () {
                         Navigator.push(

@@ -32,7 +32,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
     setState(() {
       hasError = error != null;
-      isValid = value.isNotEmpty && error == null;
+      isValid = value.trim().isNotEmpty && error == null;
     });
   }
 
@@ -54,18 +54,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           onChanged: checkValidation,
 
           validator: (value) {
-            final error = widget.validator?.call(value);
-
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              if (mounted) {
-                setState(() {
-                  hasError = error != null;
-                  isValid = value != null && value.isNotEmpty && error == null;
-                });
-              }
-            });
-
-            return error;
+            return widget.validator?.call(value);
           },
 
           decoration: InputDecoration(

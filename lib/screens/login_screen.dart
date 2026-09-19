@@ -1,7 +1,6 @@
 import 'package:ecommerce_app/core/app_text_style.dart';
 import 'package:ecommerce_app/core/colors.dart';
 import 'package:ecommerce_app/screens/bottom_navigation_barr_screen.dart';
-import 'package:ecommerce_app/screens/login_screen.dart';
 import 'package:ecommerce_app/screens/reset_password_screen.dart';
 import 'package:ecommerce_app/widgets/app_buttom.dart';
 import 'package:ecommerce_app/widgets/custom_text_field.dart';
@@ -45,17 +44,25 @@ class LoginScreen extends StatelessWidget {
 
                     CustomTextField(
                       label: 'Email',
+                      hintText: 'Enter your email address',
 
                       validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Please enter your email';
+                        if (value == null || value.trim().isEmpty) {
+                          return 'Please enter your email address';
                         }
-                        if (!value.contains('@')) {
-                          return 'Enter a valid email';
+
+                        final email = value.trim();
+
+                        final emailRegex = RegExp(
+                          r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+                        );
+
+                        if (!emailRegex.hasMatch(email)) {
+                          return 'Please enter a valid email address';
                         }
+
                         return null;
                       },
-                      hintText: 'Enter your email address',
                     ),
                     SizedBox(height: 10),
                     CustomTextField(
