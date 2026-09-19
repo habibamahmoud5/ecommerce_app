@@ -41,7 +41,7 @@ class _NewAddressState extends State<NewAddress> {
         appBar: AppBar(
           backgroundColor: AppColors.white,
 
-          title: const Text("New Address", style: AppTextStyles.h3SemiBold),
+          title: Text("New Address", style: AppTextStyles.h3SemiBold),
 
           centerTitle: true,
 

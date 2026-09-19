@@ -1,3 +1,4 @@
+import 'package:ecommerce_app/screens/bottom_navigation_barr_screen.dart';
 import 'package:ecommerce_app/screens/track_order_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -178,7 +179,15 @@ class _MyOrdersScreenState extends State<MyOrdersScreen> {
         children: [
           IconButton(
             icon: const Icon(Icons.arrow_back, color: Colors.black),
-            onPressed: () => Navigator.maybePop(context),
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      const BottomNavigationBarrScreen(initialIndex: 4),
+                ),
+              );
+            },
           ),
 
           const Expanded(

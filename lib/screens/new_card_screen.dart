@@ -44,7 +44,7 @@ class _NewCardScreenState extends State<NewCardScreen> {
         appBar: AppBar(
           backgroundColor: AppColors.white,
 
-          title: const Text("New Card", style: AppTextStyles.h3SemiBold),
+          title: Text("New Card", style: AppTextStyles.h3SemiBold),
 
           centerTitle: true,
 

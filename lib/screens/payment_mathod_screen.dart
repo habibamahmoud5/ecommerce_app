@@ -23,7 +23,7 @@ class _PaymentMathodScreenState extends State<PaymentMathodScreen> {
         appBar: AppBar(
           backgroundColor: AppColors.white,
 
-          title: const Text("Payment Method", style: AppTextStyles.h3SemiBold),
+          title: Text("Payment Method", style: AppTextStyles.h3SemiBold),
 
           centerTitle: true,
 
