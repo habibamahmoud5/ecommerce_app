@@ -1,6 +1,5 @@
-import 'package:ecommerce_app/widgets/prouduct_container.dart';
+import 'package:ecommerce_app/screens/home/widget/prouduct_container.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductGrid extends StatelessWidget {
   final List<Map<String, dynamic>> products;

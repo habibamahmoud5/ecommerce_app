@@ -1,5 +1,6 @@
 import 'package:ecommerce_app/screens/bottom_navigation_barr_screen.dart';
 import 'package:ecommerce_app/screens/home/home_screen.dart';
+import 'package:ecommerce_app/screens/onboarding/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,7 +15,7 @@ class EcommerceApp extends StatelessWidget {
       splitScreenMode: true,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: BottomNavigationBarrScreen(),
+        home: OnboardingScreen(),
       ),
     );
   }

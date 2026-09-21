@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/core/app_text_style.dart';
 import 'package:ecommerce_app/core/colors.dart';
-import 'package:ecommerce_app/widgets/filter_sheet.dart';
+import 'package:ecommerce_app/screens/home/widget/filter_sheet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

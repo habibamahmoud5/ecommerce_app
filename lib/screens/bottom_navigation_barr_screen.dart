@@ -1,9 +1,9 @@
 import 'package:ecommerce_app/core/colors.dart';
-import 'package:ecommerce_app/screens/account_screen.dart';
-import 'package:ecommerce_app/screens/discover_screen.dart';
+import 'package:ecommerce_app/screens/account/account_screen.dart';
+import 'package:ecommerce_app/screens/search/discover_screen.dart';
 import 'package:ecommerce_app/screens/home/home_screen.dart';
-import 'package:ecommerce_app/screens/cart_screen.dart';
-import 'package:ecommerce_app/screens/saved_items_screen.dart';
+import 'package:ecommerce_app/screens/cart/cart_screen.dart';
+import 'package:ecommerce_app/screens/saved/saved_items_screen.dart';
 import 'package:flutter/material.dart';
 
 class BottomNavigationBarrScreen extends StatefulWidget {
@@ -20,7 +20,7 @@ class _BottomNavigationBarrScreenState
     extends State<BottomNavigationBarrScreen> {
   late int currentIndex;
 
-  List<Widget> screens = [
+  final List<Widget> screens = [
     const HomeScreen(),
     const DiscoverScreen(),
     SavedItemsScreen(),
@@ -38,20 +38,31 @@ class _BottomNavigationBarrScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: screens[currentIndex],
+
+      // Nested Navigator
+      body: Navigator(
+        key: ValueKey(currentIndex),
+
+        onGenerateRoute: (settings) {
+          return MaterialPageRoute(builder: (context) => screens[currentIndex]);
+        },
+      ),
 
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
+
         onTap: (index) {
           setState(() {
             currentIndex = index;
           });
         },
+
         backgroundColor: Colors.white,
         selectedItemColor: AppColors.black,
         unselectedItemColor: AppColors.gray999,
         type: BottomNavigationBarType.fixed,
-        items: [
+
+        items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: 'Home'),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
           BottomNavigationBarItem(
