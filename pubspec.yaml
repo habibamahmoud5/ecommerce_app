@@ -39,6 +39,7 @@ dependencies:
   adaptive_dialog: ^2.8.1
   chat_bubbles: ^1.10.1
   flutter_screenutil: ^5.9.3
+  firebase_core: ^5.1.0
   
 
 dev_dependencies:

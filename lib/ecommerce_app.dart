@@ -1,8 +1,16 @@
 import 'package:ecommerce_app/screens/bottom_navigation_barr_screen.dart';
-import 'package:ecommerce_app/screens/home/home_screen.dart';
-import 'package:ecommerce_app/screens/onboarding/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  runApp(const EcommerceApp());
+}
 
 class EcommerceApp extends StatelessWidget {
   const EcommerceApp({super.key});
@@ -15,7 +23,7 @@ class EcommerceApp extends StatelessWidget {
       splitScreenMode: true,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: OnboardingScreen(),
+        home: BottomNavigationBarrScreen(),
       ),
     );
   }

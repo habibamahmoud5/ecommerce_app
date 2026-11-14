@@ -77,7 +77,7 @@ class _FaqasScreenState extends State<FaqasScreen> {
                   onPressed: () {},
                   icon: const Icon(
                     Icons.notifications_none,
-                    size: 20,
+                    size: 24,
                     color: AppColors.black,
                   ),
                 ),

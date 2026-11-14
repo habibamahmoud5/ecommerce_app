@@ -65,7 +65,7 @@ class _SavedProductContainerState extends State<SavedProductContainer> {
                         borderRadius: BorderRadius.circular(8.r),
                       ),
                       child: Icon(
-                        isFavorite ? Icons.favorite : Icons.favorite_border,
+                        Icons.favorite,
                         size: 16.sp,
                         color: AppColors.red,
                       ),

@@ -38,8 +38,6 @@ class _BottomNavigationBarrScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-
-      // Nested Navigator
       body: Navigator(
         key: ValueKey(currentIndex),
 
@@ -63,7 +61,10 @@ class _BottomNavigationBarrScreenState
         type: BottomNavigationBarType.fixed,
 
         items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: 'Home'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: 'Home',
+          ),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
           BottomNavigationBarItem(
             icon: Icon(Icons.favorite_outline),

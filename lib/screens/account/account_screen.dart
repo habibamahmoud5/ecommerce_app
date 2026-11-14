@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/core/colors.dart';
-import 'package:ecommerce_app/screens/account/screens/order/screen/Myorders_ongoing_completed_screen.dart';
-import 'package:ecommerce_app/screens/account/screens/order/widget/logout_option.dart';
+import 'package:ecommerce_app/screens/account/screens/order/screen/ongoing_orders_screen.dart';
+import 'package:ecommerce_app/screens/account/screens/order/widget/order_widgets/logout_option.dart';
 import 'package:ecommerce_app/screens/account/screens/details/details_screen.dart';
 import 'package:ecommerce_app/screens/account/screens/faqs/faqas_screen.dart';
 import 'package:ecommerce_app/screens/account/screens/help_center/help_center_screen.dart';
@@ -60,7 +60,9 @@ class AccountScreen extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => MyOrdersScreen()),
+                      MaterialPageRoute(
+                        builder: (context) => OngoingOrdersScreen(),
+                      ),
                     );
                   },
                 ),
